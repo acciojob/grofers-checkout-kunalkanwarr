@@ -1,26 +1,11 @@
-function calculateTotalPrice() {
-  // Get all price elements
-  const prices = document.querySelectorAll('.prices');
+describe('Grofers Checkout Solution', () => {
+  it('should find price elements', () => {
+    // Navigate to the page where prices are displayed
+    cy.visit('/your-page-url');
 
-  // Initialize total price
-  let totalPrice = 0;
+    // Wait for the price elements to be visible
+    cy.get('.price', { timeout: 10000 }).should('be.visible');
 
-  // Calculate total price
-  prices.forEach(priceElement => {
-    const price = parseFloat(priceElement.innerText);
-    totalPrice += price;
+    // Perform any additional assertions or actions
   });
-
-  // Create a new row for the total price
-  const tableBody = document.querySelector('#groceryList tbody');
-  const newRow = document.createElement('tr');
-  const newCell = document.createElement('td');
-  newCell.colSpan = 2; // Span across two columns
-  newCell.innerText = `Total: $${totalPrice.toFixed(2)}`;
-  newCell.style.fontWeight = 'bold'; // Optional styling
-  newRow.appendChild(newCell);
-  tableBody.appendChild(newRow);
-}
-
-// Call the function to calculate and display the total price
-calculateTotalPrice();
+});
