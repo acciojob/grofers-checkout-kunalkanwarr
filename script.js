@@ -1,11 +1,34 @@
-describe('Grofers Checkout Solution', () => {
-  it('should find price elements', () => {
-    // Navigate to the page where prices are displayed
-    cy.visit('/your-page-url');
+const getSumBtn = document.createElement("button");
+getSumBtn.append("Get Total Price");
+document.body.appendChild(getSumBtn);
 
-    // Wait for the price elements to be visible
-    cy.get('.price', { timeout: 10000 }).should('be.visible');
+const getSum = () => {
+//Add your code here
+	// Select all price elements
+    const prices = document.querySelectorAll('.price');
+    
+    // Initialize sum
+    let total = 0;
+    
+    // Calculate total price
+    prices.forEach(priceElement => {
+        total += parseFloat(priceElement.textContent);
+    });
+    
+    // Create a new row for the total
+    const table = document.querySelector('table');
+    const newRow = document.createElement('tr');
+    const newCell = document.createElement('td');
+    newCell.colSpan = 2; // Span across two columns
+    newCell.style.textAlign = 'right'; // Align text to the right
+    newCell.textContent = `Total: ${total}`;
+    
+    newRow.appendChild(newCell);
+    table.appendChild(newRow);
+};
 
-    // Perform any additional assertions or actions
-  });
-});
+  
+};
+
+getSumBtn.addEventListener("click", getSum);
+
