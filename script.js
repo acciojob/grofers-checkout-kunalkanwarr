@@ -1,29 +1,25 @@
-const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
-document.body.appendChild(getSumBtn);
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all price elements
+    const priceElements = document.querySelectorAll('.prices');
 
-const getSum = () => {
-    // Select all price elements
-    const prices = document.querySelectorAll('.price');
-    
-    // Initialize sum
-    let total = 0;
-    
-    // Calculate total price
-    prices.forEach(priceElement => {
-        total += parseFloat(priceElement.textContent);
+    // Initialize total price
+    let totalPrice = 0;
+
+    // Extract and sum prices
+    priceElements.forEach(priceElement => {
+        // Remove dollar sign and convert to number
+        const price = parseFloat(priceElement.textContent.replace('$', ''));
+        totalPrice += price;
     });
-    
-    // Create a new row for the total
-    const table = document.querySelector('table');
+
+    // Create a new row for the total price
+    const tableBody = document.querySelector('#groceryTable tbody');
     const newRow = document.createElement('tr');
     const newCell = document.createElement('td');
-    newCell.colSpan = 2; // Span across two columns
-    newCell.style.textAlign = 'right'; // Align text to the right
-    newCell.textContent = `Total: ${total}`;
-    
-    newRow.appendChild(newCell);
-    table.appendChild(newRow);
-};
+    newCell.colSpan = 2; // Span across both columns
+    newCell.style.fontWeight = 'bold'; // Make the text bold
+    newCell.textContent = `Total: $${totalPrice.toFixed(2)}`; // Format total price
 
-getSumBtn.addEventListener("click", getSum);
+    newRow.appendChild(newCell);
+    tableBody.appendChild(newRow);
+});
