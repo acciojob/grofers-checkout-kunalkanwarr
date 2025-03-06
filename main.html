@@ -25,6 +25,8 @@
         </tr>
     </table>
     
+    <button id="calculate-btn">Calculate Total</button>
+    
     <script>
         function calculateTotal() {
             let prices = document.querySelectorAll(".price");
@@ -44,7 +46,7 @@
             table.appendChild(totalRow);
         }
         
-        document.addEventListener("DOMContentLoaded", calculateTotal);
+        document.getElementById("calculate-btn").addEventListener("click", calculateTotal);
     </script>
 </body>
 </html>
