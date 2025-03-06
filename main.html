@@ -13,21 +13,21 @@
         </tr>
         <tr class="item">
             <td>Apple</td>
-            <td class="prices">2.00</td>
+            <td class="price">2.00</td>
         </tr>
         <tr class="item">
             <td>Banana</td>
-            <td class="prices">1.50</td>
+            <td class="price">1.50</td>
         </tr>
         <tr class="item">
             <td>Carrot</td>
-            <td class="prices">1.20</td>
+            <td class="price">1.20</td>
         </tr>
     </table>
     
     <script>
         function calculateTotal() {
-            let prices = document.querySelectorAll(".prices");
+            let prices = document.querySelectorAll(".price");
             let total = 0;
             
             prices.forEach(price => {
@@ -44,7 +44,7 @@
             table.appendChild(totalRow);
         }
         
-        calculateTotal();
+        document.addEventListener("DOMContentLoaded", calculateTotal);
     </script>
 </body>
 </html>
