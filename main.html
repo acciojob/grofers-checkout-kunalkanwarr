@@ -4,41 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery List</title>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-        }
-    </style>
 </head>
 <body>
-
-    <table id="groceryTable">
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="item">Apple</td>
-                <td class="price">$5.00</td>
-            </tr>
-            <tr>
-                <td class="item">Banana</td>
-                <td class="price">$1.50</td>
-            </tr>
-            <tr>
-                <td class="item">Orange</td>
-                <td class="price">$3.25</td>
-            </tr>
-        </tbody>
+    <table border="1" id="grocery-table">
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+        <tr class="item">
+            <td>Apple</td>
+            <td class="prices">2.00</td>
+        </tr>
+        <tr class="item">
+            <td>Banana</td>
+            <td class="prices">1.50</td>
+        </tr>
+        <tr class="item">
+            <td>Carrot</td>
+            <td class="prices">1.20</td>
+        </tr>
     </table>
-
-    <script src="script.js"></script>
+    
+    <script>
+        function calculateTotal() {
+            let prices = document.querySelectorAll(".prices");
+            let total = 0;
+            
+            prices.forEach(price => {
+                total += parseFloat(price.textContent);
+            });
+            
+            let table = document.getElementById("grocery-table");
+            let totalRow = document.createElement("tr");
+            let totalCell = document.createElement("td");
+            totalCell.setAttribute("colspan", "2");
+            totalCell.textContent = "Total Price: $" + total.toFixed(2);
+            totalRow.appendChild(totalCell);
+            
+            table.appendChild(totalRow);
+        }
+        
+        calculateTotal();
+    </script>
 </body>
 </html>
