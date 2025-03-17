@@ -12,15 +12,15 @@
             <th>Price</th>
         </tr>
         <tr class="item">
-            <td>Item 1</td>
-            <td class="price">200</td>  <!-- Adjust prices to match expected total -->
+            <td>Apples</td>
+            <td class="price">200</td>  
         </tr>
         <tr class="item">
-            <td>Item 2</td>
+            <td>Bananas</td>
             <td class="price">150</td>
         </tr>
         <tr class="item">
-            <td>Item 3</td>
+            <td>Carrots</td>
             <td class="price">60</td>
         </tr>
     </table>
@@ -31,27 +31,30 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function calculateTotal() {
-                console.log("Button Clicked - Calculating total...");
+                console.log("Button clicked - Calculating total...");
 
                 const priceElements = document.querySelectorAll('.price');
                 let total = 0;
 
                 priceElements.forEach(priceElement => {
-                    const value = parseInt(priceElement.textContent.trim());
-                    console.log("Processing price:", value); // Debugging
+                    const value = parseInt(priceElement.textContent.trim(), 10);
+                    console.log("Processing price:", value);
                     total += value;
                 });
 
-                console.log("Final total:", total); // Debugging
+                console.log("Final total:", total);
 
-                // Update #ans after a small delay
+                // Ensure Cypress sees the update
                 setTimeout(() => {
                     document.getElementById('ans').textContent = total;
-                }, 50); // 50ms delay
+                }, 100);
             }
 
-            // Attach event listener to button
-            document.getElementById('calculate-total').addEventListener('click', calculateTotal);
+            // Ensure button is available
+            const button = document.getElementById('calculate-total');
+            if (button) {
+                button.addEventListener('click', calculateTotal);
+            }
         });
     </script>
 </body>
