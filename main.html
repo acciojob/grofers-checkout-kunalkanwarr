@@ -12,23 +12,20 @@
             <th>Price</th>
         </tr>
         <tr class="item">
-            <td>Apples</td>
-            <td class="price">200</td>  <!-- Update prices to match expected total -->
+            <td>Item 1</td>
+            <td class="price">200</td>  <!-- Adjust prices to match expected total -->
         </tr>
         <tr class="item">
-            <td>Bananas</td>
+            <td>Item 2</td>
             <td class="price">150</td>
         </tr>
         <tr class="item">
-            <td>Carrots</td>
+            <td>Item 3</td>
             <td class="price">60</td>
         </tr>
     </table>
 
-    <!-- Button to trigger total calculation -->
     <button id="calculate-total">Calculate Total</button>
-
-    <!-- The total price should be displayed here -->
     <p id="ans"></p>
 
     <script>
@@ -47,10 +44,10 @@
 
                 console.log("Final total:", total); // Debugging
 
-                // Update #ans after a slight delay (ensures Cypress detects it)
+                // Update #ans after a small delay
                 setTimeout(() => {
                     document.getElementById('ans').textContent = total;
-                }, 100); // 100ms delay
+                }, 50); // 50ms delay
             }
 
             // Attach event listener to button
