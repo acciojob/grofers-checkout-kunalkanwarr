@@ -28,6 +28,9 @@
     <!-- Button to trigger total calculation -->
     <button id="calculate-total">Calculate Total</button>
 
+    <!-- The total price should be displayed here -->
+    <p id="ans"></p>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function calculateTotal() {
@@ -38,23 +41,8 @@
                     total += parseFloat(priceElement.textContent);
                 });
 
-                // Remove existing total row if it exists
-                const existingTotalRow = document.getElementById('total-row');
-                if (existingTotalRow) {
-                    existingTotalRow.remove();
-                }
-
-                // Create new row for total
-                const table = document.getElementById('grocery-table');
-                const totalRow = document.createElement('tr');
-                totalRow.setAttribute('id', 'total-row'); // Give it an ID for easy removal
-                
-                const totalCell = document.createElement('td');
-                totalCell.setAttribute('colspan', '2');
-                totalCell.textContent = `Total Price: $${total.toFixed(2)}`;
-
-                totalRow.appendChild(totalCell);
-                table.appendChild(totalRow);
+                // Display total in the #ans paragraph
+                document.getElementById('ans').textContent = `Total Price: $${total.toFixed(2)}`;
             }
 
             // Attach event listener to button
