@@ -13,32 +13,43 @@
         </tr>
         <tr class="item">
             <td>Apples</td>
-            <td class="price">2.50</td>  <!-- Updated class from "prices" to "price" -->
+            <td class="price">2.50</td>
         </tr>
         <tr class="item">
             <td>Bananas</td>
-            <td class="price">1.75</td>  <!-- Updated class -->
+            <td class="price">1.75</td>
         </tr>
         <tr class="item">
             <td>Carrots</td>
-            <td class="price">3.20</td>  <!-- Updated class -->
+            <td class="price">3.20</td>
         </tr>
     </table>
+
+    <!-- Button to trigger total calculation -->
+    <button id="calculate-total">Calculate Total</button>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function calculateTotal() {
-                const priceElements = document.querySelectorAll('.price'); // Updated selector
+                const priceElements = document.querySelectorAll('.price');
                 let total = 0;
 
                 priceElements.forEach(priceElement => {
                     total += parseFloat(priceElement.textContent);
                 });
 
+                // Remove existing total row if it exists
+                const existingTotalRow = document.getElementById('total-row');
+                if (existingTotalRow) {
+                    existingTotalRow.remove();
+                }
+
+                // Create new row for total
                 const table = document.getElementById('grocery-table');
                 const totalRow = document.createElement('tr');
+                totalRow.setAttribute('id', 'total-row'); // Give it an ID for easy removal
+                
                 const totalCell = document.createElement('td');
-
                 totalCell.setAttribute('colspan', '2');
                 totalCell.textContent = `Total Price: $${total.toFixed(2)}`;
 
@@ -46,7 +57,8 @@
                 table.appendChild(totalRow);
             }
 
-            calculateTotal();
+            // Attach event listener to button
+            document.getElementById('calculate-total').addEventListener('click', calculateTotal);
         });
     </script>
 </body>
