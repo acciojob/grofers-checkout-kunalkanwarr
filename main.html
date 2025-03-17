@@ -13,45 +13,41 @@
         </tr>
         <tr class="item">
             <td>Apples</td>
-            <td class="prices">2.50</td>
+            <td class="price">2.50</td>  <!-- Updated class from "prices" to "price" -->
         </tr>
         <tr class="item">
             <td>Bananas</td>
-            <td class="prices">1.75</td>
+            <td class="price">1.75</td>  <!-- Updated class -->
         </tr>
         <tr class="item">
             <td>Carrots</td>
-            <td class="prices">3.20</td>
+            <td class="price">3.20</td>  <!-- Updated class -->
         </tr>
     </table>
 
     <script>
-        function calculateTotal() {
-            // Select all price elements
-            const priceElements = document.querySelectorAll('.prices');
-            let total = 0;
+        document.addEventListener("DOMContentLoaded", function () {
+            function calculateTotal() {
+                const priceElements = document.querySelectorAll('.price'); // Updated selector
+                let total = 0;
 
-            // Sum up the prices
-            priceElements.forEach(priceElement => {
-                total += parseFloat(priceElement.textContent);
-            });
+                priceElements.forEach(priceElement => {
+                    total += parseFloat(priceElement.textContent);
+                });
 
-            // Create new row for total
-            const table = document.getElementById('grocery-table');
-            const totalRow = document.createElement('tr');
-            const totalCell = document.createElement('td');
+                const table = document.getElementById('grocery-table');
+                const totalRow = document.createElement('tr');
+                const totalCell = document.createElement('td');
 
-            // Set attributes for styling and merging
-            totalCell.setAttribute('colspan', '2');  
-            totalCell.textContent = `Total Price: $${total.toFixed(2)}`;
+                totalCell.setAttribute('colspan', '2');
+                totalCell.textContent = `Total Price: $${total.toFixed(2)}`;
 
-            // Append to the row and then to the table
-            totalRow.appendChild(totalCell);
-            table.appendChild(totalRow);
-        }
+                totalRow.appendChild(totalCell);
+                table.appendChild(totalRow);
+            }
 
-        // Call function to calculate total price
-        calculateTotal();
+            calculateTotal();
+        });
     </script>
 </body>
 </html>
