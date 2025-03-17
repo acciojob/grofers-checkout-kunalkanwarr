@@ -12,41 +12,46 @@
             <th>Price</th>
         </tr>
         <tr class="item">
-            <td>Apple</td>
-            <td class="price">2.00</td>
+            <td>Apples</td>
+            <td class="prices">2.50</td>
         </tr>
         <tr class="item">
-            <td>Banana</td>
-            <td class="price">1.50</td>
+            <td>Bananas</td>
+            <td class="prices">1.75</td>
         </tr>
         <tr class="item">
-            <td>Carrot</td>
-            <td class="price">1.20</td>
+            <td>Carrots</td>
+            <td class="prices">3.20</td>
         </tr>
     </table>
-    
-    <button id="calculate-btn">Calculate Total</button>
-    
+
     <script>
         function calculateTotal() {
-            let prices = document.querySelectorAll(".price");
+            // Select all price elements
+            const priceElements = document.querySelectorAll('.prices');
             let total = 0;
-            
-            prices.forEach(price => {
-                total += parseFloat(price.textContent);
+
+            // Sum up the prices
+            priceElements.forEach(priceElement => {
+                total += parseFloat(priceElement.textContent);
             });
-            
-            let table = document.getElementById("grocery-table");
-            let totalRow = document.createElement("tr");
-            let totalCell = document.createElement("td");
-            totalCell.setAttribute("colspan", "2");
-            totalCell.textContent = "Total Price: $" + total.toFixed(2);
+
+            // Create new row for total
+            const table = document.getElementById('grocery-table');
+            const totalRow = document.createElement('tr');
+            const totalCell = document.createElement('td');
+
+            // Set attributes for styling and merging
+            totalCell.setAttribute('colspan', '2');  
+            totalCell.textContent = `Total Price: $${total.toFixed(2)}`;
+
+            // Append to the row and then to the table
             totalRow.appendChild(totalCell);
-            
             table.appendChild(totalRow);
         }
-        
-        document.getElementById("calculate-btn").addEventListener("click", calculateTotal);
+
+        // Call function to calculate total price
+        calculateTotal();
     </script>
 </body>
 </html>
