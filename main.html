@@ -13,7 +13,7 @@
         </tr>
         <tr class="item">
             <td>Apples</td>
-            <td class="price">200</td>  <!-- Updated price values -->
+            <td class="price">200</td>  <!-- Update prices to match expected total -->
         </tr>
         <tr class="item">
             <td>Bananas</td>
@@ -34,15 +34,23 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function calculateTotal() {
+                console.log("Button Clicked - Calculating total...");
+
                 const priceElements = document.querySelectorAll('.price');
                 let total = 0;
 
                 priceElements.forEach(priceElement => {
-                    total += parseInt(priceElement.textContent.trim()); // Trim to avoid hidden spaces
+                    const value = parseInt(priceElement.textContent.trim());
+                    console.log("Processing price:", value); // Debugging
+                    total += value;
                 });
 
-                // Display only the number inside #ans
-                document.getElementById('ans').textContent = total;
+                console.log("Final total:", total); // Debugging
+
+                // Update #ans after a slight delay (ensures Cypress detects it)
+                setTimeout(() => {
+                    document.getElementById('ans').textContent = total;
+                }, 100); // 100ms delay
             }
 
             // Attach event listener to button
