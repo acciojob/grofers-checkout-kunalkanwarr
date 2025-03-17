@@ -13,15 +13,15 @@
         </tr>
         <tr class="item">
             <td>Apples</td>
-            <td class="price">2.50</td>
+            <td class="price">250</td> <!-- Updated values to whole numbers -->
         </tr>
         <tr class="item">
             <td>Bananas</td>
-            <td class="price">1.75</td>
+            <td class="price">160</td>
         </tr>
         <tr class="item">
             <td>Carrots</td>
-            <td class="price">3.20</td>
+            <td class="price">0</td>
         </tr>
     </table>
 
@@ -38,11 +38,11 @@
                 let total = 0;
 
                 priceElements.forEach(priceElement => {
-                    total += parseFloat(priceElement.textContent);
+                    total += parseInt(priceElement.textContent); // Ensure it's an integer
                 });
 
-                // Display total in the #ans paragraph
-                document.getElementById('ans').textContent = `Total Price: $${total.toFixed(2)}`;
+                // Display only the number inside #ans
+                document.getElementById('ans').textContent = total;
             }
 
             // Attach event listener to button
